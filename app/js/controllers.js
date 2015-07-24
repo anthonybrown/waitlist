@@ -12,11 +12,11 @@ angular.module('myApp.controllers', [])
 		//$scope.testVariable = 'tony';
 		$scope.parties = $firebase(partiesRef);
 
-		$scope.party = { name: '',	phone: '', size: '' }
+		$scope.newParty = { name: '',	phone: '', size: '' }
 
 		$scope.saveParty = function () {
-			$scope.parties.$add($scope.party);
-			$scope.party = {name: '', phone: '', size: ''}
+			$scope.parties.$add($scope.newParty);
+			$scope.newParty = {name: '', phone: '', size: ''}
 		};
 
 	}]);
