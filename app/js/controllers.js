@@ -13,12 +13,12 @@ angular.module('myApp.controllers', [])
 		$scope.parties = $firebase(partiesRef);
 
 		// Object to store data from form
-		$scope.newParty = { name: '',	phone: '', size: '' }
+		$scope.newParty = { name: '',	phone: '', size: '', done: false }
 
 		// Function to save a new party to the list.
 		$scope.saveParty = function () {
 			$scope.parties.$add($scope.newParty);
-			$scope.newParty = {name: '', phone: '', size: ''}
+			$scope.newParty = {name: '', phone: '', size: '', done: false }
 		};
 
 		// function to send text messages to parties
