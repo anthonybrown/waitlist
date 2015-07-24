@@ -22,10 +22,15 @@ angular.module('myApp.controllers', [])
 		};
 
 		// function to send text messages to parties
-		$scope.sendTextMsg = function (phoneNumber) {
+		$scope.sendTextMsg = function (party) {
 			var textMessageRef = new Firebase('https://waitlist-tonybrown.firebaseio.com/textMessages');
 			var textMessages = $firebase(textMessageRef);
-			textMessages.$add({ phoneNumber: phoneNumber });
+			var newTextMessage = {
+				phoneNumber: party.phone,
+				size: party.size,
+				name: party.name
+			}
+			textMessages.$add(newTextMessage);
 		}
 
 	}]);
