@@ -13,12 +13,12 @@ angular.module('myApp.controllers', [])
 		$scope.parties = $firebase(partiesRef);
 
 		// Object to store data from form
-		$scope.newParty = { name: '',	phone: '', size: '', done: false }
+		$scope.newParty = { name: '',	phone: '', size: '', done: false, notified: 'No' }
 
 		// Function to save a new party to the list.
 		$scope.saveParty = function () {
 			$scope.parties.$add($scope.newParty);
-			$scope.newParty = {name: '', phone: '', size: '', done: false }
+			$scope.newParty = {name: '', phone: '', size: '', done: false, notified: 'No' }
 		};
 
 		// function to send text messages to parties
@@ -31,6 +31,9 @@ angular.module('myApp.controllers', [])
 				name: party.name
 			}
 			textMessages.$add(newTextMessage);
+			// notified code
+			party.notified = 'Yes'
+			$scope.parties.$save(party.$id);
 		}
 
 	}]);
