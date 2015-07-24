@@ -1,22 +1,3 @@
-# angular-seed — the seed for AngularJS apps
-
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
-
-The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
-instant web development gratification. Just clone the repo (or download the zip/tarball), start up
-our (or yours) webserver and you are ready to develop and test your application.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together. You can
-check it out by opening app/index.html in your browser (might not work file `file://` scheme in
-certain browsers, see note below).
-
-_Note: While angular is client-side-only technology and it's possible to create angular webapps that
-don't require a backend server at all, we recommend hosting the project files using a local
-webserver during development to avoid issues with security restrictions (sandbox) in browsers. The
-sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
-etc to function properly when an html page is opened via `file://` scheme instead of `http://`._
 
 
 ## How to use angular-seed
@@ -88,7 +69,7 @@ CloudBees have provided a CI/deployment setup:
 
 <a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
 
-If you run this, you will get a cloned version of this repo to start working on in a private git repo, 
+If you run this, you will get a cloned version of this repo to start working on in a private git repo,
 along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
 
 ### Receiving updates from upstream
@@ -150,3 +131,32 @@ fetch the changes and merge them into your project with git.
 
 For more information on AngularJS please check out http://angularjs.org/
 # waitlist
+
+Waitlist is an application that addresses how a restaraunt handles a waitlist
+we are using Angular and firebase to create a web based application that will
+notify the parties by SMS or phone call.
+
+This app used the:
+# angular-seed — the seed for AngularJS apps
+
+This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
+You can use it to quickly bootstrap your angular webapp projects and dev environment for these
+projects.
+
+The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
+instant web development gratification. Just clone the repo (or download the zip/tarball), start up
+our (or yours) webserver and you are ready to develop and test your application.
+
+The seed app doesn't do much, just shows how to wire two controllers and views together. You can
+check it out by opening app/index.html in your browser (might not work file `file://` scheme in
+certain browsers, see note below).
+
+_Note: While angular is client-side-only technology and it's possible to create angular webapps that
+don't require a backend server at all, we recommend hosting the project files using a local
+webserver during development to avoid issues with security restrictions (sandbox) in browsers. The
+sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
+etc to function properly when an html page is opened via `file://` scheme instead of `http://`._
+
+
+* would like to add more features in the future
+* upgrade to latest versions of libs and services
