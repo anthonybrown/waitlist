@@ -6,9 +6,10 @@ angular.module('myApp.controllers', [])
 	.controller('LandingPageController', [function () {
 
 	}])
-		.controller('WaitlistController', ['$scope','$firebase',  function ($scope, $firebase) {
+		.controller('WaitlistController', ['$scope','$firebase', 'FIREBASE_URL',
+		function ($scope, $firebase, FIREBASE_URL) {
 			// connect $scope.parties to live firebase data.
-			var partiesRef = new Firebase('https://waitlist-tonybrown.firebaseio.com/parties');
+			var partiesRef = new Firebase(FIREBASE_URL + 'parties');
 			//$scope.testVariable = 'tony';
 			$scope.parties = $firebase(partiesRef);
 
@@ -23,7 +24,7 @@ angular.module('myApp.controllers', [])
 
 			// function to send text messages to parties
 			$scope.sendTextMsg = function (party) {
-				var textMessageRef = new Firebase('https://waitlist-tonybrown.firebaseio.com/textMessages');
+				var textMessageRef = new Firebase(FIREBASE_URL + 'textMessages');
 				var textMessages = $firebase(textMessageRef);
 				var newTextMessage = {
 					phoneNumber: party.phone,
@@ -37,9 +38,9 @@ angular.module('myApp.controllers', [])
 			};
 
 		}])
-		.controller('AuthController', ['$scope','$firebaseSimpleLogin', '$location',
-			function ($scope,$firebaseSimpleLogin, $location ) {
-				var authRef = new Firebase('https://waitlist-tonybrown.firebaseio.com/');
+		.controller('AuthController', ['$scope','$firebaseSimpleLogin', '$location', 'FIREBASE_URL',
+			function ($scope,$firebaseSimpleLogin, $location, FIREBASE_URL ) {
+				var authRef = new Firebase(FIREBASE_URL);
 				var auth = $firebaseSimpleLogin(authRef);
 
 				$scope.user = {email: '', password: ''};
@@ -47,8 +48,17 @@ angular.module('myApp.controllers', [])
 				$scope.register = function () {
 					auth.$createUser($scope.user.email, $scope.user.password)
 						.then(function (data) {
-							console.log(data)
+							console.log(data);
+							// the authentication is done through
+							// the our own authentication in the
+							// login method
+
+							// auth.$login('password', $scope.user);
 							$scope.login();
+							// I'd like the page to redirect
+							// to the login page not directly to the waitlist
+
+
 					});
 				};
 
