@@ -14,4 +14,19 @@ angular.module('myApp.services', [])
 	// this factory method is the equivalent to line 9.
 	.factory('FIREBASE_URL', function() {
 		return 'https://waitlist-tonybrown.firebaseio.com/';
+	})
+	.factory('authService', function ($firebaseSimpleLogin, $location, FIREBASE_URL) {
+		var authRef = new Firebase(FIREBASE_URL);
+		var auth = $firebaseSimpleLogin(authRef);
+
+		return {
+			login: function (user) {
+				auth.$login('password', user)
+					.then(function (data) {
+						console.log(data);
+						// redirect users to /waitlist
+					$location.path('/waitlist');
+				});
+			}
+		};
 	});

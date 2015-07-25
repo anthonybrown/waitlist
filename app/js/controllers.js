@@ -38,8 +38,8 @@ angular.module('myApp.controllers', [])
 			};
 
 		}])
-		.controller('AuthController', ['$scope','$firebaseSimpleLogin', '$location', 'FIREBASE_URL',
-			function ($scope,$firebaseSimpleLogin, $location, FIREBASE_URL ) {
+		.controller('AuthController', ['$scope','$firebaseSimpleLogin', '$location', 'FIREBASE_URL', 'authService',
+			function ($scope,$firebaseSimpleLogin, $location, FIREBASE_URL, authService ) {
 				var authRef = new Firebase(FIREBASE_URL);
 				var auth = $firebaseSimpleLogin(authRef);
 
@@ -49,26 +49,12 @@ angular.module('myApp.controllers', [])
 					auth.$createUser($scope.user.email, $scope.user.password)
 						.then(function (data) {
 							console.log(data);
-							// the authentication is done through
-							// the our own authentication in the
-							// login method
-
-							// auth.$login('password', $scope.user);
 							$scope.login();
-							// I'd like the page to redirect
-							// to the login page not directly to the waitlist
-
-
 					});
 				};
 
 				$scope.login = function () {
-					auth.$login('password', $scope.user)
-						.then(function (data) {
-							console.log(data);
-							// redirect users to /waitlist
-							$location.path('/waitlist');
-					});
+					authService.login($scope.user);
 				};
 
 				$scope.logout = function () {
